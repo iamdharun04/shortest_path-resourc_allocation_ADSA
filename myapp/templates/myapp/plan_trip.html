@@ -1,0 +1,19 @@
+<!-- templates/myapp/plan_trip.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan Trip</title>
+</head>
+<body>
+    <h1>Plan Your Trip</h1>
+    <p>Use this form to plan your trip between districts.</p>
+
+    <!-- Form for trip planning -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Plan Trip</button>
+    </form>
+</body>
+</html>

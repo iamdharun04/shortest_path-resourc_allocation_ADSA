@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Touring Places List</title>
+</head>
+<body>
+    <h1>Touring Places</h1>
+    <ul>
+        {% for place in places %}
+            <li>{{ place.name }} - {{ place.city }}, {{ place.country }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

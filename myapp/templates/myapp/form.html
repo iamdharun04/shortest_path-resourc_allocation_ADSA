@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gear Planner</title>
+    <style>
+        /* Global styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            /* Set background image */
+            background-image: url("{% static 'myapp/images/aa.jpeg' %}");
+            background-size: cover; /* Cover ensures the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background image from repeating */
+        }
+
+        .content {
+            z-index: 1; /* Ensure content appears above the background image */
+            width: 100%;
+            max-width: 600px; /* Adjust width as needed */
+            margin: auto; /* Center content horizontally */
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Adjust opacity and color */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            width: calc(100% - 22px); /* Adjust width to account for padding and border */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-control-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-control-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 style="text-align: center; color: #333;">Gear Planner</h1>
+
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.trip_duration.id_for_label }}">Trip Duration (days)</label>
+                    {{ form.trip_duration }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.max_weight.id_for_label }}">Maximum Weight Capacity (kg)</label>
+                    {{ form.max_weight }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.weather_condition.id_for_label }}">Weather Condition</label>
+                    {{ form.weather_condition }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.terrain_type.id_for_label }}">Terrain Type</label>
+                    {{ form.terrain_type }}
+                </div>
+                <button type="submit" class="form-control-button">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

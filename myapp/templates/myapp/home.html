@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <style>
+        /* CSS styles */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align items */
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            padding-left: 170px; /* Adjust padding to move content right by 170px */
+            position: relative;
+            z-index: 2; /* Ensure container is above the image */
+            text-align: center; /* Center align text */
+            margin-left:-30px;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0); /* Transparent background */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed; /* Fixed position at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3; /* Ensure menu is above everything */
+            width: 100%;
+        }
+        .title {
+            font-size: 4em; /* Increased font size of title */
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            font-weight: bold; /* Bold font for title */
+            position: relative;
+            color: white; /* White color for title */
+        }
+        .slogan {
+            font-style: italic;
+            font-size: 2em; /* Increased font size of slogan */
+            margin-bottom: 20px;
+            position: relative;
+            color: white; /* White color for slogan */
+        }
+        .see-details-button {
+            background-color: #4CAF50; /* Green background */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2em;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .see-details-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+            font-size: 1.5em; /* Increased font size of menu items */
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 40px; /* Increased space between menu items */
+        }
+        nav ul li a {
+            color: #fff; /* White color for menu items */
+            text-decoration: none;
+        }
+        .cover-image {
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Ensure content doesn't overflow */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Push behind other content */
+        }
+        .cover-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Ensure image covers the entire space */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 2; /* Ensure content is above image */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for content */
+        }
+        .algorithm-explanation {
+            padding: 40px 20px;
+            text-align: justify;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .data-structures-heading {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 40px;
+            text-align: center;
+            color: black;
+        }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'pb' %}">Plan Backpack</a></li>
+                <li><a href="{% url 'pt' %}">Plan Trips</a></li>
+                <!-- Add more menu items as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="title">Trip Planner</div>
+        <div class="slogan">Your ultimate travel planning companion</div>
+
+    </div>
+
+    <div class="cover-image">
+        <img src="{% static 'myapp/images/dd.jpg' %}" alt="Image">
+    </div>
+
+    <div class="main-content" id="details">
+        <div class="data-structures-heading">Data Structures Used</div>
+        <div class="algorithm-explanation">
+            <h2>Knapsack Algorithm:</h2>
+            <p>The knapsack algorithm is a combinatorial optimization problem where the goal is to maximize the total value of items in a knapsack without exceeding its weight capacity. It's commonly used in resource allocation, budgeting, and scheduling problems.</p>
+
+            <h2>Prim's Algorithm:</h2>
+            <p>Prim's algorithm is used to find the minimum spanning tree (MST) of a connected weighted graph. It starts from an arbitrary node and repeatedly adds the minimum weight edge that connects a vertex from the tree to a vertex outside of the tree until all vertices are included in the MST.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Trip Planner Project Team
+    </footer>
+</body>
+</html>

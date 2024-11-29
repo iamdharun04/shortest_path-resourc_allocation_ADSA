@@ -1,0 +1,83 @@
+<!-- tourplan/templates/tourplan/plan_tour.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan Tour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url("{% static 'tourplan/images/ab.jpg' %}");
+            background-size: cover; /* Cover ensures the image covers the entire background */
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+        .graph {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .graph img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Plan Your Tour</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if graph_image %}
+    <div class="graph">
+        <h2>Touring Places Graph</h2>
+        <img src="data:image/png;base64,{{ graph_image }}" alt="Touring Places Graph">
+    </div>
+    {% endif %}
+
+    {% if mst_image %}
+    <div class="graph">
+        <h2>Minimum Spanning Tree (MST)</h2>
+        <img src="data:image/png;base64,{{ mst_image }}" alt="Minimum Spanning Tree">
+    </div>
+    {% endif %}
+</body>
+</html>

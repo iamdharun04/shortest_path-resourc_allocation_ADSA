@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ city_details.name }} Details</title>
+    <!-- Add your CSS styles and static files as needed -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'plan_trip' %}">Plan Trip</a></li>
+                <li><a href="{% url 'plan_backpack' %}">Optimize Gear</a></li>
+                <!-- Add more menu items as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>{{ city_details.name }}</h1>
+        <p>{{ city_details.description }}</p>
+        <!-- Display more details about the city -->
+    </div>
+
+    <footer>
+        &copy; 2024 Tourplan Project Team
+    </footer>
+</body>
+</html>

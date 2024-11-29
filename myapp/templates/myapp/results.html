@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gear Planner - Results</title>
+    <style>
+        /* Global styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+             background-image: url("{% static 'myapp/images/ee.jpeg' %}");
+            background-size: cover; /* Cover ensures the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+        }
+
+        .results-container {
+            text-align: center;
+            margin-top: 50px; /* Adjust margin as needed */
+        }
+
+        .gear-item {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .gear-item p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .gear-item .gear-weight {
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .back-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <h1>Selected Gear Items</h1>
+
+        {% if selected_items %}
+            {% for item in selected_items %}
+            <div class="gear-item">
+                <p>{{ item.1 }} - Weight: {{ item.6 }} g</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No gear items found matching the criteria.</p>
+        {% endif %}
+
+        <a href="{% url 'home' %}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
